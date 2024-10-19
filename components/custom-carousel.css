@@ -1,0 +1,5 @@
+/* custom-carousel.css */
+/* Replace 'red' with the color you want for the arrow buttons */
+.carousel.carousel-slider .control-arrow {
+  background-color: red !important;
+}

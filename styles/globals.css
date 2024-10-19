@@ -1,0 +1,147 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,600;1,200&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes ping {
+  75%, 100% {
+      transform: scale(1.5);
+      opacity: 0;
+  }
+}
+
+/* global.css */
+.slide-up {
+  animation: slideUp 0.3s ease-in-out;
+  opacity: 1;
+}
+
+.programme-description.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(50%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
+
+.font-Playfair Display{
+  font-family: "Playfair Display"!important;
+}
+.font-Poppins{
+  font-family: "Poppins"!important;
+}
+.font-Sacramento{
+  font-family: "Sacramento"!important;
+}
+.font-Inter{
+  font-family: "Inter"!important;
+}
+.font-Montserrat{
+  font-family: "Montserrat"!important;
+}
+body{
+  top: 0!important;
+  margin: 0;
+}
+
+/* h1,h2,h3,h4,h5,h6{
+  font-family: "Cinzel Decorative"!important;
+} */
+
+.tns-visually-hidden{
+  display: none;
+}
+
+.navbar-link{
+  @apply block pt-1 px-3 text-neutral-700 text-lg after:block after:w-0 after:h-[2px] after:bg-[#2E4467] hover:after:w-full after:mt-3 after:duration-200
+}
+
+.skiptranslate{
+  display: none!important;
+}
+
+.line-left{
+  @apply relative font-bold text-center text-4xl before:hidden after:hidden lg:before:block lg:after:block before:absolute before:top-1/2 before:left-0 before:-translate-y-1/2 before:w-1/3 before:h-[2px] before:bg-app-main after:absolute after:top-1/2 after:-left-[11px] after:-translate-y-1/2 after:w-5 after:h-5 after:bg-white after:border-2 after:border-app-main after:rounded-full
+}
+
+.line-right{
+  @apply relative font-bold text-center text-4xl before:hidden after:hidden lg:before:block lg:after:block before:absolute before:top-1/2 before:right-0 before:-translate-y-1/2 before:w-1/3 before:h-[2px] before:bg-app-main after:absolute after:top-1/2 after:-right-[11px] after:-translate-y-1/2 after:w-5 after:h-5 after:bg-white after:border-2 after:border-app-main after:rounded-full
+}
+
+.animate-ping {
+  animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.vision-cover{
+  /* background-image: linear-gradient(to bottom, #4778c800 65%, #2E4467); */
+  background-image: linear-gradient(to bottom, #4778c800 65%, #000);
+}
+
+.carousel .slide.selected {
+  z-index: 0!important;
+}
+
+.publications a{
+  @apply inline break-words font-bold text-app-dark text-xs w-full hover:underline
+}
+
+.tns-nav{
+  @apply py-4 bg-transparent flex justify-center items-center;
+}
+
+.tns-nav > [aria-controls] {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  margin: 0 5px;
+  border-radius: 50%;
+  background: #ddd;
+  border: 0;
+}
+
+.tns-nav > .tns-nav-active {
+  @apply bg-app-dark;
+}
+
+input.peer[value=""] ~ label{
+  @apply top-1/2;
+}
+
+
+/* Define a custom scrollbar style */
+.custom-scrollbar {
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #4a90e2 #f5f5f5; /* For Firefox */
+}
+
+/* Customize the scrollbar track (background) */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px; /* Width of the scrollbar track */
+  height: 4px; /* Height of the scrollbar track (for horizontal scrollbar) */
+  background-color: #f5f5f5; /* Background color of the scrollbar track */
+}
+
+/* Customize the scrollbar thumb (the draggable part) */
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #4a90e2; /* Color of the scrollbar thumb */
+  border-radius: 4px; /* Rounded corners of the scrollbar thumb */
+}
+

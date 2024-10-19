@@ -1,0 +1,113 @@
+import Head from 'next/head';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { GiArchiveResearch } from 'react-icons/gi';
+
+import Button from '../../components/Button';
+import Footer from '../../components/Footer';
+import Navbar from '../../components/Navbar';
+import Support from '../../components/Support';
+
+import { research_institutes } from '../../data';
+
+import 'animate.css';
+import SEO from '../../components/SEO';
+
+export default function Home() {
+
+    const router = useRouter();
+    const { slug } = router.query;
+    const base = "https://benin.africanschoolofeconomics.com";
+
+    const institute = research_institutes.filter(r => r.acronym === 'ASE-WPS')[0];
+
+  return (
+    <>
+      <SEO
+        title={institute.acronym}
+        description={institute.title}
+        image={ institute.image || '/static/img/bg.png'}
+      />
+      
+      <Navbar />
+
+        <section style={{ backgroundImage: `url(${ institute.image || '/static/img/bg.png'})` }} className={`relative py-12 px-6 lg:p-12 h-[40vh] grid place-content-center bg-cover bg-center items-center isolate`}>
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-app-dark to-transparent -z-10"></div>
+        </section>
+
+        <section className='lg:px-20 py-10 px-5 flex gap-8 bg-app-dark !text-white'>
+            <div className='space-y-2'>
+                <p className='font-bold text-lg lg:text-3xl text-white'>{institute.title}</p>
+                <p className='flex space-x-3'>
+                    <span className='flex gap-2 items-center text-xs uppercase'>
+                        <GiArchiveResearch className="" />
+                        {institute.acronym}
+                    </span>
+                </p>
+            </div>
+        </section>
+
+        <section className='bg-neutral-100 lg:py-20 lg:px-16 py-12 px-5 mx-auto'>
+            <div className='grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 max-w-5xl mx-auto'>
+                <div className='lg:col-span-8 space-y-8 list'>
+
+                    <div className='bg-white p-4 lg:p-8 text-sm space-y-4 clear-both' dangerouslySetInnerHTML={{
+                        __html: `
+                            <p>ASE Working Paper Series (ASE-WPS)&nbsp;is an online publication which aims to disseminate preliminary results of ongoing research projects carried out by the African School of Economics’ community of students, professors, researchers and visiting scholars.</p>
+                            <p>ASE-WPS will be published twice a year and its manuscripts will be peer-reviewed by our Advisory Board.</p>
+                            <p>Articles focus on the following topics:</p>
+                            <ul class="list-disc list-inside maker:pr-3">
+                                <li>Economics</li>
+                                <li>Econometrics</li>
+                                <li>Finance</li>
+                                <li>Management</li>
+                            </ul>
+                            <p>Submission information will be posted soon.</p>
+                        `
+                    }}>
+                    </div>
+                    
+                </div>
+
+                <div className='lg:col-span-4 space-y-12'>
+
+                    <div className='bg-white px-5 py-8 space-y-2'>
+                        
+                        <p className='font-bold text-app-dark'>Research Institute</p>
+
+                        <div className='divide-y divide-neutral-300'>
+                            {research_institutes.map(({title, acronym}, index) => (
+                                <Link key={index} href={`/research/${acronym.replace(/\s/ig,'-').toLowerCase()}`}>
+                                    <a className='py-3 block text-sm font-bold hover:underline hover:text-app-dark cursor-pointer'>
+                                        {title}
+                                    </a>
+                                </Link>
+                            ))}
+                        </div>
+
+                    </div>
+
+                    <div className='relative isolate bg-[url(/static/img/brochure.jpg)] bg-cover h-[450px] flex flex-col items-center justify-end px-5 py-8 space-y-2'>
+                        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-app-dark to-transparent -z-10"></div>
+
+                        <p className='w-full font-bold text-center text-white text-2xl'>Need a quick guide into ASE? Get our brochure</p>
+
+                        <Link href="https://benin.africanschoolofeconomics.com/wp-content/uploads/2020/06/New-ASE-CI-Brochure-Final-2020.pdf">
+                            <a target="_blank" className='inline-block'>
+                                <Button className="!bg-white !text-app-dark !text-xs lg:!py-2 lg:!px-4" text="Download Brochure"></Button>
+                            </a>
+                        </Link>
+                    </div>
+                    
+                </div>
+            </div>
+
+        </section>
+
+
+      <Support />
+
+      <Footer />
+    </>
+  )
+}
